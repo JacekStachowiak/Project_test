@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
+import time
 
 
 class LoginTests():
@@ -24,10 +25,24 @@ class LoginTests():
         button = driver.find_element(By.XPATH, '//input[@class="btn btn-default btn-block btn-md dynamic-button"]')
         button.click()
 
+        all_course = driver.find_element(By.LINK_TEXT, "ALL COURSES")
+        all_course.click()
+        search = driver.find_element(By.XPATH, '//input[@id="search"]')
+        search.clear()
+        search.send_keys('JavaScript')
+        button_search = driver.find_element(By.XPATH, '//button[@class="find-course search-course"]')
+        button_search.click()
+        course = driver.find_element(By.XPATH, '//h4[@class="dynamic-heading"]')
+        course.click()
+        button_enroll = driver.find_element(By.XPATH, '//button[@class="dynamic-button btn btn-default btn-lg btn-enroll"]')
+        button_enroll.click()
+       
         driver.quit()
 
 run_test = LoginTests()
-run_test.test_validLogin()        
+run_test.test_validLogin() 
+
+       
             
     
 
