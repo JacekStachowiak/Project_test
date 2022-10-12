@@ -1,75 +1,73 @@
+import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 import time
-# from selenium.webdriver.support.select import Select
 
-class LoginTests():
+class LoginTest(unittest.TestCase):
     
-    def test_error(self):
+    # locators
+    _sing_log = '//div[contains(text(),"Sign Up or Log In")]'
+    _email_field = 'email'
+    _password_field = 'password'
+    _login_button = '//input[@class="btn btn-default btn-block btn-md dynamic-button"]'
+    _verify_login = '//span[@class="dynamic-text help-block"]'
+    
+    
+    def __init__(self, driver):
+        self.driver = driver
+    
+    def test_login(self):
         baseUrl = 'https://letskodeit.com/'
         driver = webdriver.Chrome(ChromeDriverManager().install())
         driver.maximize_window()
         driver.implicitly_wait(3)
         driver.get(baseUrl)
     
-        sing_log = driver.find_element(By.XPATH, '//div[contains(text(),"Sign Up or Log In")]')
-        sing_log.click()
-        email = driver.find_element(By.ID, 'email')
-        email.clear()
-        email.send_keys('test@email.com')
-        password = driver.find_element(By.ID, 'password')
-        password.clear()
-        password.send_keys('abcabc')
-        button = driver.find_element(By.XPATH, '//input[@class="btn btn-default btn-block btn-md dynamic-button"]')
-        button.click()
-
-        all_course = driver.find_element(By.LINK_TEXT, "ALL COURSES")
-        all_course.click()
-        search = driver.find_element(By.XPATH, '//input[@id="search"]')
-        search.clear()
-        search.send_keys('JavaScript')
-        button_search = driver.find_element(By.XPATH, '//button[@class="find-course search-course"]')
-        button_search.click()
-        course = driver.find_element(By.XPATH, '//h4[@class="dynamic-heading"]')
-        course.click()
-        button_enroll = driver.find_element(By.XPATH, '//button[@class="dynamic-button btn btn-default btn-lg btn-enroll"]')
-        button_enroll.click()
-
-        driver.execute_script("window.scrollBy(0,700);")    # poziom i drugi: zakres dokąd
-                
-        driver.switch_to.frame(0)
-        
-        card_number = driver.find_element(By.NAME, 'cardnumber')        
-        card_number.clear()
-        card_number.send_keys('1234 2345 3456 4567')
-        
-        _errorLocator = '//h3[contains(@class, "dynamic-heading") and contains(text(), "{0}" )]'
-        _errorElement = _errorLocator.format('Numer karty jest nieprawidłowy.')
-        error = driver.find_element(By.XPATH, _errorElement) 
-        
-        assert error == 'Numer karty jest nieprawidłowy.'
-        
-        '''
-        card_data = driver.find_element(By.NAME, 'exp-date')
-        card_data.clear()
-        card_data.send_keys('10/23')
-        
-        card_code = driver.find_element(By.NAME, 'cvc')
-        card_code.clear()
-        card_code.send_keys('345')
-        
-        country = driver.find_element(By.NAME, 'country-list')
-        card_country = Select(country)
-        card_country.select_by_visible_text('Poland')
-        '''
-        driver.quit()
-
-run_test = LoginTests()
-run_test.test_error() 
-
-       
-            
+    def singLog(self):
+        self.driver.find_element(By.XPATH, self._sing_log)
     
+    def emailField(self):
+        self.driver.find_element(By.ID, self._email_field)    
+    
+    def passwordField(self):
+        self.driver.find_element(By.ID, self._password_field)            
+    
+    def loginButton(self):
+        self.driver.find_element(By.XPATH, self._login_button)
+    
+    
+    def clickLogIn(self):
+        self._sing_log.click()
+    
+    def enterEmail(self):
+        self._email_field.clear()
+        self._email_field.send_keys('test@email.com')     
 
+    def enterPassword(self):
+        self._password_field.clear()
+        self._password_field.send_keys('abcabc')
+    
+    def clickButton(self):
+        self._login_button.click()        
+
+    def Login(self):
+        self.test_login()
+                
+        self.singLog()
+        self.clickLogIn()
+        
+        self.emailField()
+        self.enterEmail()
+        
+        self.passwordField()
+        self.enterPassword()
+        
+        self.loginButton()
+        self.clickButton()
+    
+    def test_verifyLogin(self):
+        assert self._verify_login == 'Your username or password is invalid. Please try again.'
+        
+        self.driver.quit()
