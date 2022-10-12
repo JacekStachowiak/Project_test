@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 import time
-from selenium.webdriver.support.select import Select
+# from selenium.webdriver.support.select import Select
 
 class LoginTests():
     
@@ -38,24 +38,25 @@ class LoginTests():
         button_enroll.click()
 
         driver.execute_script("window.scrollBy(0,700);")    # poziom i drugi: zakres dokąd
-        time.sleep(3)
-        
+                
         driver.switch_to.frame(0)
-        card_number = driver.find_element(By.XPATH, '//div[@id="root"]/form//div[@class="CardNumberField CardNumberField--ltr"]//input[@name="cardnumber"]')        
+        
+        card_number = driver.find_element(By.NAME, 'cardnumber')        
         card_number.clear()
         card_number.send_keys('1234 2345 3456 4567')
-        time.sleep(4)
         
-        error = driver.find_element(By.XPATH, '//div[@class="card-errors has-error"]')
+        _errorLocator = '//h3[contains(@class, "dynamic-heading") and contains(text(), "{0}" )]'
+        _errorElement = _errorLocator.format('Numer karty jest nieprawidłowy.')
+        error = driver.find_element(By.XPATH, _errorElement) 
+        
         assert error == 'Numer karty jest nieprawidłowy.'
         
-        
         '''
-        card_data = driver.find_element(By.XPATH, '//input[@name="exp-date"]')
+        card_data = driver.find_element(By.NAME, 'exp-date')
         card_data.clear()
         card_data.send_keys('10/23')
         
-        card_code = driver.find_element(By.XPATH, '//input[@name="cvc"]')
+        card_code = driver.find_element(By.NAME, 'cvc')
         card_code.clear()
         card_code.send_keys('345')
         
