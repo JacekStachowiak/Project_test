@@ -1,8 +1,9 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from pages.home.login_page import LoginPage
-
-class LoginTest():
+from selenium.webdriver.common.by import By
+import unittest
+class LoginTest(unittest.TestCase):
     
     def test_validLogin(self):
         baseUrl = 'https://letskodeit.com/'
@@ -11,10 +12,15 @@ class LoginTest():
         driver.implicitly_wait(3)
         driver.get(baseUrl)
         lp = LoginPage(driver)
-        lp.login('test@email.com', 'abcabc')
+        lp.login('test@email.com', 'abcabcABC')
+
+        verifyLogin = driver.find_element(By.XPATH, '//span[@class="dynamic-text help-block"]').text
         
-        # assert self._verify_login == 'Your username or password is invalid. Please try again.'
+        if verifyLogin is not None:
+            print('Element znaleziony')
+            assert verifyLogin == 'Your username or password is invalid. Please try again.'
+        else:
+            print('Nie ma elementu')            
+
         driver.quit()
 
-run_test = LoginTest()
-run_test.test_validLogin()

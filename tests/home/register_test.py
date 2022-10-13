@@ -2,11 +2,11 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
-import time
 from selenium.webdriver.support.select import Select
 from pages.home.register_page import RegisterPage
+import unittest
 
-class RegisterTest():
+class RegisterTest(unittest.TestCase):
     
     def test_registerPage(self):
         baseUrl = 'https://courses.letskodeit.com/'
@@ -26,7 +26,3 @@ class RegisterTest():
         assert error == 'Numer karty jest nieprawidłowy.'
             
         driver.quit()
-        
-run_test = RegisterTest()
-run_test.test_registerPage()        
-        
