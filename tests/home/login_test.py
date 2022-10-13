@@ -1,12 +1,10 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.keys import Keys
 from pages.home.login_page import LoginPage
 
 class LoginTest():
     
-    def test_validLogin():
+    def test_validLogin(self):
         baseUrl = 'https://letskodeit.com/'
         driver = webdriver.Chrome(ChromeDriverManager().install())
         driver.maximize_window()
