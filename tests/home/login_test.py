@@ -17,7 +17,7 @@ class LoginTest(unittest.TestCase):
         verifyLogin = driver.find_element(By.XPATH, '//span[@class="dynamic-text help-block"]').text
         
         if verifyLogin is not None:
-            print('Element znaleziony')
+            print(f'Element znaleziony: {verifyLogin}')
             assert verifyLogin == 'Your username or password is invalid. Please try again.'
         else:
             print('Nie ma elementu')            

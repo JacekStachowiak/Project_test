@@ -16,13 +16,16 @@ class RegisterTest(unittest.TestCase):
         driver.get(baseUrl)
         rp = RegisterPage(driver)
         rp.registerCourse('JavaScript')
-        rp.card('1234 2345 3456 4567', '10/23', '345')    
-        rp.country('Poland')
+        #rp.card('1234 2345 3456 4567', '10/23', '345')    
+        #rp.country('Poland')
         
-        _errorLocator = '//h3[contains(@class, "dynamic-heading") and contains(text(), "{0}" )]'
-        _errorElement = _errorLocator.format('Numer karty jest nieprawidłowy.')
-        error = self.driver.find_element(By.XPATH, _errorElement) 
+        _error = '//*[@id="checkout-form"]/div[2]/div[3]/div/div[1]/div[1]/div/div[1]'
+        error_card = driver.find_element(By.XPATH, _error).text
         
-        assert error == 'Numer karty jest nieprawidłowy.'
+        if error_card is not None:
+            print(f'Element znaleziony: {error_card}')
+            assert error_card == 'Numer karty jest nieprawidłowy.'
+        else:
+            print('Brak elementu')            
             
         driver.quit()
