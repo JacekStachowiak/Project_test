@@ -1,4 +1,3 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -9,8 +8,7 @@ class LoginPage():
     _email_field = 'email'
     _password_field = 'password'
     _login_button = '//input[@class="btn btn-default btn-block btn-md dynamic-button"]'
-    _verify_login = '//span[@class="dynamic-text help-block"]'
-    
+
     def __init__(self, driver):
         self.driver = driver
         
@@ -24,5 +22,5 @@ class LoginPage():
         passwordField.clear()
         passwordField.send_keys(password)
         loginButton = self.driver.find_element(By.XPATH, self._login_button)
-        loginButton.click() 
+        loginButton.click()
 
