@@ -1,9 +1,6 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.keys import Keys
-import time
 from selenium.webdriver.support.select import Select
+import time
 
 class RegisterPage():
     
@@ -13,12 +10,14 @@ class RegisterPage():
     _button_search = '//button[@class="find-course search-course"]'
     _course = '//h4[@class="dynamic-heading"]'
     _button_enroll = '//button[@class="dynamic-button btn btn-default btn-lg btn-enroll"]'
-    _card_number = 'cardnumber'
-    _card_data = 'exp-date'
-    _card_code = 'cvc'
-    _country_select = 'country-list'
-    
-    
+    _iframe1 = '//*[@id="card-number"]/div/iframe'
+    _iframe2 = '//*[@id="card-expiry"]/div/iframe'
+    _iframe3 = '//*[@id="card-cvc"]/div/iframe'
+    #_card_number = 'cardnumber'
+    #_card_data = 'exp-date'
+    #_card_code = 'cvc'
+    #_country_select = 'country-list'
+        
     def __init__(self, driver):
         self.driver = driver
     
@@ -37,38 +36,34 @@ class RegisterPage():
         course.click()
         button_enroll = self.driver.find_element(By.XPATH, self._button_enroll)
         button_enroll.click()
+        
+        self.driver.execute_script("window.scrollBy(0,700);")    
+        
 
 
     def card(self, cardnumber, carddata, cardcode):
         
-        self.driver.execute_script("window.scrollBy(0,700);")    
-        self.driver.switch_to.frame(0)
-        
-        card_number = self.driver.find_element(By.NAME, self._card_number)        
+        card_number = self.driver.switch_to.frame(By.XPATH, self._iframe1)
+        #card_number = self.driver.find_element(By.NAME, self._card_number)        
         card_number.clear()
         card_number.send_keys(cardnumber)
-        
-        card_data = self.driver.find_element(By.NAME, self.card_data)
+        time.sleep(2)
+                
+        card_data = self.driver.switch_to.frame(By.XPATH, self._iframe2)
+        #card_data = self.driver.find_element(By.NAME, self._card_data)
         card_data.clear()
         card_data.send_keys(carddata)
-        
-        card_code = self.driver.find_element(By.NAME, self.card_code)
+        time.sleep(2)
+                
+        card_code = self.driver.switch_to.frame(By.XPATH, self._iframe3)
+        #card_code = self.driver.find_element(By.NAME, self.card_code)
         card_code.clear()
         card_code.send_keys(cardcode)
+        time.sleep(2)
     
+    '''
     def country(self, countryname):
         
         country = self.driver.find_element(By.NAME, self._country_select)
         card_country = Select(country)
-        card_country.select_by_visible_text(countryname)
-        
-        
-        
-        '''
-        
-        
-        
-        
-        
-        '''
-        
+        card_country.select_by_visible_text(countryname)'''
