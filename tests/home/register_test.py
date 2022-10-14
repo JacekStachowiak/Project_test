@@ -16,7 +16,7 @@ class RegisterTest(unittest.TestCase):
         driver.get(baseUrl)
         rp = RegisterPage(driver)
         rp.registerCourse('JavaScript')
-        rp.card('1234 2345 3456 4567', '10/24', '345')    
+        rp.card('1234 2345 3456 4567', '10/24', '345') 
         #rp.country('Poland')
         
         
