@@ -13,9 +13,9 @@ class RegisterPage():
     _iframe1 = '//*[@id="card-number"]/div/iframe'
     _iframe2 = '//*[@id="card-expiry"]/div/iframe'
     _iframe3 = '//*[@id="card-cvc"]/div/iframe'
-    #_card_number = 'cardnumber'
-    #_card_data = 'exp-date'
-    #_card_code = 'cvc'
+    _card_number = 'cardnumber'
+    _card_data = 'exp-date'
+    _card_code = 'cvc'
     #_country_select = 'country-list'
         
     def __init__(self, driver):
@@ -40,29 +40,28 @@ class RegisterPage():
         self.driver.execute_script("window.scrollBy(0,700);")    
         
 
-
     def card(self, cardnumber, carddata, cardcode):
         
-        card_number = self.driver.switch_to.frame(By.XPATH, self._iframe1)
-        #card_number = self.driver.find_element(By.NAME, self._card_number)        
+        self.driver.switch_to.frame(self.driver.find_element(By.XPATH, self._iframe1))
+        card_number = self.driver.find_element(By.NAME, self._card_number)        
         card_number.clear()
         card_number.send_keys(cardnumber)
         self.driver.switch_to.default_content()
         time.sleep(2)
                 
-        card_data = self.driver.switch_to.frame(By.XPATH, self._iframe2)
-        #card_data = self.driver.find_element(By.NAME, self._card_data)
+        self.driver.switch_to.frame(self.driver.find_element(By.XPATH,self._iframe2))
+        card_data = self.driver.find_element(By.NAME, self._card_data)
         card_data.clear()
         card_data.send_keys(carddata)
         self.driver.switch_to.default_content()
         time.sleep(2)
                 
-        card_code = self.driver.switch_to.frame(By.XPATH, self._iframe3)
-        #card_code = self.driver.find_element(By.NAME, self.card_code)
+        self.driver.switch_to.frame(self.driver.find_element(By.XPATH,self._iframe3))
+        card_code = self.driver.find_element(By.NAME, self.card_code)
         card_code.clear()
         card_code.send_keys(cardcode)
         self.driver.switch_to.default_content()
-        time.sleep(2)
+        time.sleep(4)
     
     '''
     def country(self, countryname):
