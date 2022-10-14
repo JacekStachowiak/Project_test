@@ -12,15 +12,42 @@ class LoginPage():
     def __init__(self, driver):
         self.driver = driver
         
+    def getSingLog(self):
+        return self.driver.find_element(By.XPATH, self._sing_log)
+    
+    def getEmailField(self):
+        return self.driver.find_element(By.ID, self._email_field)
+    
+    def getPasswordField(self):
+        return self.driver.find_element(By.ID, self._password_field)
+    
+    def getLoginButton(self):
+        return self.driver.find_element(By.XPATH, self._login_button)
+    
+        
+    def clickSingLog(self):
+        self.getSingLog().click()
+    
+    def enterEmailField(self, username):
+        self.getEmailField().clear()
+        self.getEmailField().send_keys(username) 
+    
+    def enterPasswordField(self, password):
+        self.getPasswordField().clear()
+        self.getPasswordField().send_keys(password)               
+    
+    def clickLoginButton(self):
+        self.getLoginButton().click()
+        
     def login(self, username, password):
-        sing_log = self.driver.find_element(By.XPATH, self._sing_log)
-        sing_log.click()
-        emailField = self.driver.find_element(By.ID, self._email_field)
-        emailField.clear()
-        emailField.send_keys(username) 
-        passwordField = self.driver.find_element(By.ID, self._password_field)
-        passwordField.clear()
-        passwordField.send_keys(password)
-        loginButton = self.driver.find_element(By.XPATH, self._login_button)
-        loginButton.click()
+        self.getSingLog()
+        self.clickSingLog()
+        self.getEmailField()
+        self.enterEmailField(username)
+        self.getPasswordField()
+        self.enterPasswordField(password)
+        self.getLoginButton()
+        self.clickLoginButton()
+        
+        
 
