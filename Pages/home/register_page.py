@@ -47,18 +47,21 @@ class RegisterPage():
         #card_number = self.driver.find_element(By.NAME, self._card_number)        
         card_number.clear()
         card_number.send_keys(cardnumber)
+        self.driver.switch_to.default_content()
         time.sleep(2)
                 
         card_data = self.driver.switch_to.frame(By.XPATH, self._iframe2)
         #card_data = self.driver.find_element(By.NAME, self._card_data)
         card_data.clear()
         card_data.send_keys(carddata)
+        self.driver.switch_to.default_content()
         time.sleep(2)
                 
         card_code = self.driver.switch_to.frame(By.XPATH, self._iframe3)
         #card_code = self.driver.find_element(By.NAME, self.card_code)
         card_code.clear()
         card_code.send_keys(cardcode)
+        self.driver.switch_to.default_content()
         time.sleep(2)
     
     '''
