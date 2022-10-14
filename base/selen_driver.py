@@ -3,6 +3,7 @@ from traceback import print_stack
 from selenium.webdriver.support.ui import WebDriverWait     
 from selenium.webdriver.support import expected_conditions as EC 
 from selenium.common.exceptions import * 
+from selenium.webdriver.support.select import Select
 
 class SelenDriver():
     
@@ -38,6 +39,24 @@ class SelenDriver():
             print('Element not found')
         return element            
 
+    def startFrame(self, locator, locatorType = 'id'):
+        try:
+            frame = self.getElement(locator, locatorType)
+            element = self.driver.switch_to.frame(frame)
+            print(f'Frame found: {frame}')
+        except:
+            print(f'Frame not found: {frame}')  
+        return element   
+    
+    def endFrame(self):
+        element = self.driver.switch_to.default_content()
+        return element 
+
+    def select(self, countryname, locator, locatorType='id'):
+        element = self.getElement(locator, locatorType)
+        element2 = Select(element)
+        element2.select_by_visible_text(countryname)
+    
     def elementClick(self, locator, locatorType='id'):
         try:
             element = self.getElement(locator, locatorType)
