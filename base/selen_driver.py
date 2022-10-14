@@ -46,6 +46,16 @@ class SelenDriver():
         except:
             print(f'Cannot clik on the element with locator: {locator}, locatorType: {locatorType}')
             print_stack()
+    
+    def sendKeys(self, data, locator, locatorType='id'):
+        try:
+            element = self.getElement(locator, locatorType)
+            element.send_keys(data)
+            print(f'Send data on  element with locator: {locator}, locatorType: {locatorType}')
+        except:
+            print(f'Cannot send data on the element with locator: {locator}, locatorType: {locatorType}')
+            print_stack()
+    
             
 # aby sprawdzić czy element jest obecny na stronie - czy będzie false czy True cały czas testujemy (nie wyrzuci)
     def isElementPresent(self, byType, locator):
