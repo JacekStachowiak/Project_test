@@ -39,9 +39,9 @@ class SelenDriver():
             locatorType = locatorType.lower()
             byType = self.getByType(locatorType)
             element = self.driver.find_element(byType, locator) 
-            print(f'Element list found with locator: {locator}, and locatorType: {locatorType}')           
+            print(f'Element found with locator: {locator}, and locatorType: {locatorType}')           
         except:
-            print(f'Element list not found with locator: {locator}, and locatorType: {locatorType}')
+            print(f'Element not found with locator: {locator}, and locatorType: {locatorType}')
         return element            
 
 
@@ -107,10 +107,10 @@ class SelenDriver():
                 element = self.getElement(locator, locatorType)
             print('Before finding text')
             text = element.text
-            print(f'After finding element, size is {str(len(text))}')
-            if len(text) == 0:
-                text = element.get_attribute('inner text')
-            if len(text) != 0:
+            long = str(len(text))
+            if long == 0:
+                text = element.get_attribute('innerText')
+            if long != 0:
                 print(f'Getting text on element :: {info}')
                 print(f'The text is :: {text}')
                 text = text.strip()
@@ -119,9 +119,18 @@ class SelenDriver():
             print_stack()
             text = None
         return text            
- 
-            
-# aby sprawdzić czy element jest obecny na stronie - czy będzie false czy True cały czas testujemy (nie wyrzuci)
+    
+    def errorCard(self, locator='', locatorType='id'):
+        
+        element = self.getElement(locator, locatorType)
+        message = element.text
+        if message is not None:
+            print(f'Element znaleziony: {message}')
+        else:
+            print('Wszystko w porządku') 
+        return message            
+
+    # aby sprawdzić czy element jest obecny na stronie - czy będzie false czy True cały czas testujemy (nie wyrzuci)
     def isElementPresent(self, locator='', locatorType='id', element=None):
         try:
             if locator:
@@ -143,7 +152,7 @@ class SelenDriver():
             if locator:
                 element = self.getElement(locator, locatorType)
             if element is not None:
-                isDisplayed = element.is_dispplayed()
+                isDisplayed = element.is_displayed()
                 print(f'Element is displayed with locator: {locator}, locatorType: {locatorType}')                
             else:
                 print(f'Element is not displayed with locator: {locator}, locatorType: {locatorType}')                
@@ -183,6 +192,7 @@ class SelenDriver():
             print('Element not appeared on the page')
             print_stack()  # ślad stosu
         return element         
+
     
     def webScroll(self, direction='up'):
         
@@ -190,7 +200,7 @@ class SelenDriver():
             self.driver.execute_script('window.scrollBy(0, -1000);')
         
         if direction == 'down':
-            self.driver.execute_script('window.scrollBy(0, 1000);')            
+            self.driver.execute_script('window.scrollBy(0, 700);')            
         
           
         

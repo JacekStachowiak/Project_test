@@ -1,3 +1,4 @@
+from email import message
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
@@ -18,7 +19,10 @@ class RegisterTest(unittest.TestCase):
         rp.registerCourse('JavaScript')
         rp.card('1234 2345 3456 4567', '10/24', '345') 
         rp.country('Poland')
+        
+        assert rp.textErrorCard() == 'Numer karty jest nieprawidłowy.'
        
+        '''
         _error = '//div[@class="card-errors has-error"]'
         error_card = driver.find_element(By.XPATH, _error).text
         
@@ -26,6 +30,6 @@ class RegisterTest(unittest.TestCase):
             print(f'Element znaleziony: {error_card}')
             assert error_card == 'Numer karty jest nieprawidłowy.'
         else:
-            print('Brak elementu')            
-            
+            print('Brak elementu')
+        '''            
         driver.quit()
