@@ -1,3 +1,4 @@
+from email import message
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 import time
@@ -18,6 +19,7 @@ class RegisterPage(SelenDriver):
     _card_data = 'exp-date'
     _card_code = 'cvc'
     _country_select = 'country-list'
+    _error_number_card = '//div[@class="card-errors has-error"]'
 
         
     def __init__(self, driver):
@@ -60,6 +62,11 @@ class RegisterPage(SelenDriver):
    
     def selectCountry(self, countryname):
         self.select(countryname, self._country_select, 'name')
+    
+    
+    def textErrorCard(self):
+        self.errorCard(self._error_number_card, 'xpath')
+                
     
     def registerCourse(self, namecourse):
         self.clickAllCourse()

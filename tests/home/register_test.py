@@ -1,9 +1,6 @@
-from email import message
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.select import Select
 from pages.home.register_page import RegisterPage
 import unittest
 
