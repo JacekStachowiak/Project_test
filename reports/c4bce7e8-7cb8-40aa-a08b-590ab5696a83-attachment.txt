@@ -1,0 +1,25 @@
+
+Element Found
+Cliked on the element with locator: ALL COURSES, locatorType: text
+Element Found
+Send data on  element with locator: //input[@id="search"], locatorType: xpath
+Element Found
+Cliked on the element with locator: //button[@class="find-course search-course"], locatorType: xpath
+Element Found
+Cliked on the element with locator: //h4[@class="dynamic-heading"], locatorType: xpath
+Element Found
+Cliked on the element with locator: //button[@class="dynamic-button btn btn-default btn-lg btn-enroll"], locatorType: xpath
+Element Found
+Start Frame - found
+Element Found
+Send data on  element with locator: cardnumber, locatorType: name
+Element Found
+Start Frame - found
+Element Found
+Send data on  element with locator: exp-date, locatorType: name
+Element Found
+Start Frame - found
+Element Found
+Send data on  element with locator: cvc, locatorType: name
+Element Found
+Element znaleziony: Numer karty jest nieprawidłowy.

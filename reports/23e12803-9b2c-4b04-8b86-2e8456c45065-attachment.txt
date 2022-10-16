@@ -1,0 +1,10 @@
+
+Element Found
+Cliked on the element with locator: //div[contains(text(),"Sign Up or Log In")], locatorType: xpath
+Element Found
+Send data on  element with locator: email, locatorType: id
+Element Found
+Send data on  element with locator: password, locatorType: id
+Element Found
+Cliked on the element with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], locatorType: xpath
+Element znaleziony: Your username or password is invalid. Please try again.

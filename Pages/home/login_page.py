@@ -1,53 +1,52 @@
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+from base.selen_driver import SelenDriver
 
-class LoginPage():
+class LoginPage(SelenDriver):
     
     # locators
     _sing_log = '//div[contains(text(),"Sign Up or Log In")]'
     _email_field = 'email'
     _password_field = 'password'
     _login_button = '//input[@class="btn btn-default btn-block btn-md dynamic-button"]'
+    _login2 = '//span[@class="caret"]'
 
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
-        
-    def getSingLog(self):
-        return self.driver.find_element(By.XPATH, self._sing_log)
-    
-    def getEmailField(self):
-        return self.driver.find_element(By.ID, self._email_field)
-    
-    def getPasswordField(self):
-        return self.driver.find_element(By.ID, self._password_field)
-    
-    def getLoginButton(self):
-        return self.driver.find_element(By.XPATH, self._login_button)
-    
-        
+
+
     def clickSingLog(self):
-        self.getSingLog().click()
+        self.elementClick(self._sing_log, locatorType='xpath')
     
     def enterEmailField(self, username):
-        self.getEmailField().clear()
-        self.getEmailField().send_keys(username) 
+        #self.getEmailField().clear()
+        self.sendKeys(username, self._email_field, locatorType='id') 
     
     def enterPasswordField(self, password):
-        self.getPasswordField().clear()
-        self.getPasswordField().send_keys(password)               
+        #self.getPasswordField().clear()
+        self.sendKeys(password, self._password_field, locatorType='id')               
     
     def clickLoginButton(self):
-        self.getLoginButton().click()
-        
-    def login(self, username, password):
-        self.getSingLog()
+        self.elementClick(self._login_button, locatorType='xpath')
+    
+    def clicklogin2(self):
+        self.elementClick(self._login2, locatorType='xpath')
+                
+    def loginValid(self, username, password):
         self.clickSingLog()
-        self.getEmailField()
         self.enterEmailField(username)
-        self.getPasswordField()
         self.enterPasswordField(password)
-        self.getLoginButton()
         self.clickLoginButton()
+    
+    def loginSuccesfull(self, username, password):
+        self.clickSingLog()
+        self.enterEmailField(username)
+        self.enterPasswordField(password)
+        self.clickLoginButton()
+        self.clicklogin2()
+        
+                
         
         
 

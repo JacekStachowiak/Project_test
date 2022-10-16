@@ -43,9 +43,9 @@ class SelenDriver():
         try:
             frame = self.getElement(locator, locatorType)
             element = self.driver.switch_to.frame(frame)
-            print(f'Frame found: {frame}')
+            print('Start Frame - found')
         except:
-            print(f'Frame not found: {frame}')  
+            print('Start Frame not found')  
         return element   
     
     def endFrame(self):
