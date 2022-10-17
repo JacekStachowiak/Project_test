@@ -7,29 +7,48 @@ import pytest
 
 class LoginTest(unittest.TestCase):
     
-    driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver.maximize_window()
-    driver.implicitly_wait(3)
-    lp = LoginPage(driver)
-    baseUrl = 'https://letskodeit.com/'
-    
-    @pytest.mark.run(order=2)
-    def test_validLogin(self):
+    @pytest.mark.run(order=1)
+    def test_validLogin(self): 
+        baseUrl = 'https://letskodeit.com/'
+        driver = webdriver.Chrome(ChromeDriverManager().install())
+        driver.maximize_window()
+        driver.implicitly_wait(3)
+        lp = LoginPage(driver)       
+        driver.get(baseUrl)
         
-        self.driver.get(self.baseUrl)
-        self.lp.loginValid('test@email.com', 'abcabcABC')
-        message_valid = self.lp.loginNotOK()
+        lp.loginValid('test@email.com', 'abcabcABC')
+        message_valid = lp.loginNotOK()
         assert message_valid == 'Your username or password is invalid. Please try again.'       
-        self.driver.quit()
+        driver.quit()
     
                  
-    @pytest.mark.run(order=1)   # kolejność testów
-    def test_loginSucces(self):
+    @pytest.mark.run(order=2)   # kolejność testów
+    def test_loginSucces(self):  
+        baseUrl = 'https://letskodeit.com/'
+        driver = webdriver.Chrome(ChromeDriverManager().install())
+        driver.maximize_window()
+        driver.implicitly_wait(3)
+        lp = LoginPage(driver) 
+        driver.get(baseUrl)
         
-        self.driver.get(self.baseUrl)
-        self.lp.loginSuccesfull('test@email.com', 'abcabc')
-        message_succes = self.lp.loginOK()
+        lp.loginSuccesfull('test@email.com', 'abcabc')
+        message_succes = lp.loginOK()
         assert message_succes == 'My Account'
-        self.driver.quit()
+        driver.quit()
+    
+    def test_loginPustePole(self):
+        baseUrl = 'https://letskodeit.com/'
+        driver = webdriver.Chrome(ChromeDriverManager().install())
+        driver.maximize_window()
+        driver.implicitly_wait(3)
+        lp = LoginPage(driver) 
+        driver.get(baseUrl)
+        
+        lp.loginValid('test@email.com', 'abcabc')
+        message_succes = lp.loginOK()
+        assert message_succes == 'My Account'
+        driver.quit()
+        
+                
         
 
