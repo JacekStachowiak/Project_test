@@ -124,11 +124,13 @@ class SelenDriver():
         
         element = self.getElement(locator, locatorType)
         message = element.text
+        
         if message is not None:
             print(f'Element znaleziony: {message}')
         else:
-            print('Wszystko w porządku') 
-        return message            
+            print('Wszystko w porządku')
+        
+        return message                
 
     # aby sprawdzić czy element jest obecny na stronie - czy będzie false czy True cały czas testujemy (nie wyrzuci)
     def isElementPresent(self, locator='', locatorType='id', element=None):

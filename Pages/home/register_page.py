@@ -68,6 +68,11 @@ class RegisterPage(SelenDriver):
         self.errorCard(self._error_number_card, locatorType='xpath')
     
     
+    
+    def textErrorCard(self):
+        self.errorCard(self._error_number_card, 'xpath')
+                
+    
     def registerCourse(self, namecourse):
         self.clickAllCourse()
         self.enterSearchCourse(namecourse)
