@@ -7,15 +7,15 @@ import pytest
 
 class LoginTest(unittest.TestCase):
     
-    baseUrl = 'https://letskodeit.com/'
     driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.maximize_window()
     driver.implicitly_wait(3)
-    
     lp = LoginPage(driver)
+    baseUrl = 'https://letskodeit.com/'
     
     @pytest.mark.run(order=2)
     def test_validLogin(self):
+        
         self.driver.get(self.baseUrl)
         self.lp.loginValid('test@email.com', 'abcabcABC')
         message_valid = self.lp.loginNotOK()
@@ -25,9 +25,11 @@ class LoginTest(unittest.TestCase):
                  
     @pytest.mark.run(order=1)   # kolejność testów
     def test_loginSucces(self):
+        
         self.driver.get(self.baseUrl)
         self.lp.loginSuccesfull('test@email.com', 'abcabc')
         message_succes = self.lp.loginOK()
         assert message_succes == 'My Account'
-        # self.driver.quit()
+        self.driver.quit()
+        
 

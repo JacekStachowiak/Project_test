@@ -1,20 +1,20 @@
-2022/10/17 16:02 PM: INFO: Element found with locator: //div[contains(text(),"Sign Up or Log In")], and locatorType: xpath
-2022/10/17 16:03 PM: INFO: Cliked on the element with locator: //div[contains(text(),"Sign Up or Log In")], locatorType: xpath
-2022/10/17 16:03 PM: INFO: Element found with locator: email, and locatorType: id
-2022/10/17 16:03 PM: INFO: Send data on  element with locator: email, locatorType: id
-2022/10/17 16:03 PM: INFO: Element found with locator: password, and locatorType: id
-2022/10/17 16:03 PM: INFO: Send data on  element with locator: password, locatorType: id
-2022/10/17 16:03 PM: INFO: Element found with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], and locatorType: xpath
-2022/10/17 16:03 PM: INFO: Cliked on the element with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], locatorType: xpath
-2022/10/17 16:03 PM: INFO: Element not found with locator: //span[@class="caret"], and locatorType: xpath
-2022/10/17 16:03 PM: INFO: Cannot clik on the element with locator: //span[@class="caret"], locatorType: xpath
-2022/10/17 16:03 PM: INFO: Element not found with locator: //a[contains(text(),"My Account")], and locatorType: xpath
-2022/10/17 16:03 PM: INFO: Element not found with locator: //div[contains(text(),"Sign Up or Log In")], and locatorType: xpath
-2022/10/17 16:03 PM: INFO: Cannot clik on the element with locator: //div[contains(text(),"Sign Up or Log In")], locatorType: xpath
-2022/10/17 16:03 PM: INFO: Element not found with locator: email, and locatorType: id
-2022/10/17 16:03 PM: INFO: Cannot send data on the element with locator: email, locatorType: id
-2022/10/17 16:03 PM: INFO: Element not found with locator: password, and locatorType: id
-2022/10/17 16:03 PM: INFO: Cannot send data on the element with locator: password, locatorType: id
-2022/10/17 16:03 PM: INFO: Element not found with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], and locatorType: xpath
-2022/10/17 16:03 PM: INFO: Cannot clik on the element with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], locatorType: xpath
-2022/10/17 16:03 PM: INFO: Element not found with locator: //span[@class="dynamic-text help-block"], and locatorType: xpath
+2022/10/17 16:44 PM: INFO: Element found with locator: //div[contains(text(),"Sign Up or Log In")], and locatorType: xpath
+2022/10/17 16:44 PM: INFO: Cliked on the element with locator: //div[contains(text(),"Sign Up or Log In")], locatorType: xpath
+2022/10/17 16:44 PM: INFO: Element found with locator: email, and locatorType: id
+2022/10/17 16:44 PM: INFO: Send data on  element with locator: email, locatorType: id
+2022/10/17 16:44 PM: INFO: Element found with locator: password, and locatorType: id
+2022/10/17 16:44 PM: INFO: Send data on  element with locator: password, locatorType: id
+2022/10/17 16:44 PM: INFO: Element found with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], and locatorType: xpath
+2022/10/17 16:44 PM: INFO: Cliked on the element with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], locatorType: xpath
+2022/10/17 16:44 PM: INFO: Element not found with locator: //span[@class="caret"], and locatorType: xpath
+2022/10/17 16:44 PM: INFO: Cannot clik on the element with locator: //span[@class="caret"], locatorType: xpath
+2022/10/17 16:44 PM: INFO: Element not found with locator: //a[contains(text(),"My Account")], and locatorType: xpath
+2022/10/17 16:44 PM: INFO: Element found with locator: //div[contains(text(),"Sign Up or Log In")], and locatorType: xpath
+2022/10/17 16:44 PM: INFO: Cliked on the element with locator: //div[contains(text(),"Sign Up or Log In")], locatorType: xpath
+2022/10/17 16:44 PM: INFO: Element found with locator: email, and locatorType: id
+2022/10/17 16:44 PM: INFO: Send data on  element with locator: email, locatorType: id
+2022/10/17 16:44 PM: INFO: Element found with locator: password, and locatorType: id
+2022/10/17 16:44 PM: INFO: Send data on  element with locator: password, locatorType: id
+2022/10/17 16:44 PM: INFO: Element found with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], and locatorType: xpath
+2022/10/17 16:44 PM: INFO: Cliked on the element with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], locatorType: xpath
+2022/10/17 16:44 PM: INFO: Element not found with locator: //span[@class="dynamic-text help-block"], and locatorType: xpath
