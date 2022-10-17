@@ -17,8 +17,8 @@ class RegisterTest(unittest.TestCase):
         rp.card('1234 2345 3456 4567', '10/24', '345') 
         rp.country('Poland')
         
-        result = rp.errorCardNumber()
-        assert result == 'Numer karty jest nieprawidłowy.' 
+        message = rp.errorCardNumber()
+        assert message == 'Numer karty jest nieprawidłowy.' 
                         
         '''
         _error = '//div[@class="card-errors has-error"]'
