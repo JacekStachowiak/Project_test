@@ -63,16 +63,7 @@ class RegisterPage(SelenDriver):
    
     def selectCountry(self, countryname):
         self.select(countryname, self._country_select, locatorType='name')
-    
-    def textErrorCard(self):
-        self.errorCard(self._error_number_card, locatorType='xpath')
-    
-    
-    
-    def textErrorCard(self):
-        self.errorCard(self._error_number_card, 'xpath')
-                
-    
+
     def registerCourse(self, namecourse):
         self.clickAllCourse()
         self.enterSearchCourse(namecourse)
@@ -94,3 +85,5 @@ class RegisterPage(SelenDriver):
     
     def country(self, countryname):
         self.selectCountry(countryname)
+    
+           

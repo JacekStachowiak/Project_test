@@ -121,16 +121,16 @@ class SelenDriver():
         return text            
     
     def errorCard(self, locator='', locatorType='id'):
-        
         element = self.getElement(locator, locatorType)
         message = element.text
         
         if message is not None:
             print(f'Element znaleziony: {message}')
+            assert message == 'Numer karty jest nieprawidłowy.'
+            print('Asercja OK')
         else:
             print('Wszystko w porządku')
-        
-        return message                
+        return message        
 
     # aby sprawdzić czy element jest obecny na stronie - czy będzie false czy True cały czas testujemy (nie wyrzuci)
     def isElementPresent(self, locator='', locatorType='id', element=None):
