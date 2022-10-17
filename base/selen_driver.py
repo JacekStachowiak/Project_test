@@ -29,7 +29,7 @@ class SelenDriver():
         elif locatorType == 'text':
             return By.LINK_TEXT
         else:
-            print(f'Ten typ locatora {locatorType} nie jest wspierany/nie jest dobry')
+            self.log.info(f'Ten typ locatora {locatorType} nie jest wspierany/nie jest dobry')
         return False            
 
 
@@ -39,9 +39,9 @@ class SelenDriver():
             locatorType = locatorType.lower()
             byType = self.getByType(locatorType)
             element = self.driver.find_element(byType, locator) 
-            print(f'Element found with locator: {locator}, and locatorType: {locatorType}')           
+            self.log.info(f'Element found with locator: {locator}, and locatorType: {locatorType}')           
         except:
-            print(f'Element not found with locator: {locator}, and locatorType: {locatorType}')
+            self.log.info(f'Element not found with locator: {locator}, and locatorType: {locatorType}')
         return element            
 
 
@@ -51,9 +51,9 @@ class SelenDriver():
             locatorType = locatorType.lower()
             byType = self.getByType(locatorType)
             element = self.driver.find_elements(byType, locator) 
-            print(f'Element list found with locator: {locator}, and locatorType: {locatorType}')           
+            self.log.info(f'Element list found with locator: {locator}, and locatorType: {locatorType}')           
         except:
-            print(f'Element list not found with locator: {locator}, and locatorType: {locatorType}')
+            self.log.info(f'Element list not found with locator: {locator}, and locatorType: {locatorType}')
         return element
   
     
@@ -83,9 +83,9 @@ class SelenDriver():
             if locator:
                 element = self.getElement(locator, locatorType)
             element.click()
-            print(f'Cliked on the element with locator: {locator}, locatorType: {locatorType}')
+            self.log.info(f'Cliked on the element with locator: {locator}, locatorType: {locatorType}')
         except:
-            print(f'Cannot clik on the element with locator: {locator}, locatorType: {locatorType}')
+            self.log.info(f'Cannot clik on the element with locator: {locator}, locatorType: {locatorType}')
             print_stack()
     
     
@@ -94,9 +94,9 @@ class SelenDriver():
             if locator:
                 element = self.getElement(locator, locatorType)
             element.send_keys(data)
-            print(f'Send data on  element with locator: {locator}, locatorType: {locatorType}')
+            self.log.info(f'Send data on  element with locator: {locator}, locatorType: {locatorType}')
         except:
-            print(f'Cannot send data on the element with locator: {locator}, locatorType: {locatorType}')
+            self.log.info(f'Cannot send data on the element with locator: {locator}, locatorType: {locatorType}')
             print_stack()
     
     
@@ -138,10 +138,10 @@ class SelenDriver():
             if locator:
                 element = self.getElement(locator, locatorType) # By.Id, 'name'
             if element is not None:
-                print(f'Element present with locator: {locator}, locatorType: {locatorType}')
+                self.log.info(f'Element present with locator: {locator}, locatorType: {locatorType}')
                 return True
             else: 
-                print(f'Element not present with locator: {locator}, locatorType: {locatorType}')
+                self.log.info(f'Element not present with locator: {locator}, locatorType: {locatorType}')
                 return False
         except:
             print('Element not found')
@@ -155,9 +155,9 @@ class SelenDriver():
                 element = self.getElement(locator, locatorType)
             if element is not None:
                 isDisplayed = element.is_displayed()
-                print(f'Element is displayed with locator: {locator}, locatorType: {locatorType}')                
+                self.log.info(f'Element is displayed with locator: {locator}, locatorType: {locatorType}')                
             else:
-                print(f'Element is not displayed with locator: {locator}, locatorType: {locatorType}')                
+                self.log.info(f'Element is not displayed with locator: {locator}, locatorType: {locatorType}')                
             return isDisplayed
         except:
             print('Element not found')
@@ -169,10 +169,10 @@ class SelenDriver():
         try:
             elementList = self.driver.find_elements(byType, locator) # By.Id, 'name'
             if len(elementList) > 0:
-                print(f'Element present with locator: {locator}, locatorType: {str(byType)}')
+                self.log.info(f'Element present with locator: {locator}, locatorType: {str(byType)}')
                 return True
             else:
-                print(f'Element not present with locator: {locator}, locatorType: {str(byType)}')
+                self.log.info(f'Element not present with locator: {locator}, locatorType: {str(byType)}')
                 return False
         except:
             print('Element not found')
@@ -189,9 +189,9 @@ class SelenDriver():
                                                                                         ElementNotVisibleException,
                                                                                         ElementNotSelectableException ]) 
             element = wait.until(EC.visibility_of_element_located((byType, locator))) # uwaga na ilośc nawiasów
-            print('Element appeared (pojawił się) on the web page')
+            self.log.info('Element appeared (pojawił się) on the web page')
         except:
-            print('Element not appeared on the page')
+            self.log.info('Element not appeared on the page')
             print_stack()  # ślad stosu
         return element         
 
