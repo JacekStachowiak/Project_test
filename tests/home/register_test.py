@@ -6,28 +6,20 @@ import unittest
 
 class RegisterTest(unittest.TestCase):
     
+    baseUrl = 'https://courses.letskodeit.com/'
+    driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver.maximize_window()
+    driver.implicitly_wait(3)
+    driver.get(baseUrl)
+    rp = RegisterPage(driver)
+    
     def test_registerPage(self):
-        baseUrl = 'https://courses.letskodeit.com/'
-        driver = webdriver.Chrome(ChromeDriverManager().install())
-        driver.maximize_window()
-        driver.implicitly_wait(3)
-        driver.get(baseUrl)
-        rp = RegisterPage(driver)
-        rp.registerCourse('JavaScript')
-        rp.card('1234 2345 3456 4567', '10/24', '345') 
-        rp.country('Poland')
         
-        message = rp.errorCardNumber()
+        self.rp.registerCourse('JavaScript')
+        self.rp.card('1234 2345 3456 4567', '10/24', '345') 
+        self.rp.country('Poland')
+        
+        message = self.rp.errorCardNumber()
         assert message == 'Numer karty jest nieprawidłowy.' 
-                        
-        '''
-        _error = '//div[@class="card-errors has-error"]'
-        error_card = driver.find_element(By.XPATH, _error).text
-        
-        if error_card is not None:
-            print(f'Element znaleziony: {error_card}')
-            assert error_card == 'Numer karty jest nieprawidłowy.'
-        else:
-            print('Brak elementu')'''
-                   
-        driver.quit()
+        self.driver.quit()
+
