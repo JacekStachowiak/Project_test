@@ -45,8 +45,5 @@ class LoginPage(SelenDriver):
         self.enterPasswordField(password)
         self.clickLoginButton()
         self.clicklogin2()
-        
-                
-        
-        
+
 
