@@ -3,6 +3,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from pages.home.login_page import LoginPage
 from selenium.webdriver.common.by import By
 import unittest
+
 class LoginTest(unittest.TestCase):
     
     def test_validLogin(self):
