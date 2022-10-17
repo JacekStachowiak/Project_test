@@ -3,8 +3,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 import time
 from base.selen_driver import SelenDriver
+import utilities.custom_logger as cl
+import logging
 
 class RegisterPage(SelenDriver):
+    
+    log = cl.customLogger(logging.DEBUG)
+    
 #===============================
 #          locators
 #===============================
@@ -85,5 +90,9 @@ class RegisterPage(SelenDriver):
     
     def country(self, countryname):
         self.selectCountry(countryname)
+    
+    def errorCardNumber(self):
+        result = self.getText(self._error_number_card, 'xpath')
+        return result    
     
            
