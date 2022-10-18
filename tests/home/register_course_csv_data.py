@@ -4,7 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from pages.home.register_page import RegisterPage
 import unittest
 from ddt import ddt, data, unpack
-import pytest
 from utilities.read_data import getCSVData
 
 @ddt
@@ -17,7 +16,7 @@ class RegisterCSVTest(unittest.TestCase):
     driver.get(baseUrl)
     rp = RegisterPage(driver)
     
-    @data(*getCSVData('/Project_test/testdata.csv'))
+    @data(*getCSVData('/klon/Project_test/testdata.csv'))
     @unpack
     def test_registerPage(self, namecourse, cardnumber, carddata, cardcode, countryname):
         
@@ -27,7 +26,5 @@ class RegisterCSVTest(unittest.TestCase):
                 
         message = self.rp.errorCardNumber()
         assert message == 'Numer karty jest nieprawidłowy.' 
-        self.rp.clickAllCourse()
-        self.driver.get(self.baseUrl)
-        
+                
         self.driver.quit()
