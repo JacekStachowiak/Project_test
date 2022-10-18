@@ -14,7 +14,7 @@ class RegisterTest(unittest.TestCase):
     
     def test_registerPage(self):
         self.driver.get(self.baseUrl)
-        self.rp.registerCourse('JavaScript')
+        self.rp.registerCourse('JavaScript for beginners')
         self.rp.card('1234 2345 3456 4567', '10/24', '345') 
         self.rp.country('Poland')
         
