@@ -4,6 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from pages.home.register_page import RegisterPage
 import unittest
 from ddt import ddt, data, unpack
+import pytest
 
 @ddt
 class RegisterTest(unittest.TestCase):
@@ -15,7 +16,8 @@ class RegisterTest(unittest.TestCase):
     driver.get(baseUrl)
     rp = RegisterPage(driver)
     
-    @data(('JavaScript for beginners', '1234 2345 3456 4567', '10/24', '345', 'Poland'), ('Learn Python 3 from scratch', '1234 2345 3456 4567', '10/24', '345', 'Poland'))
+    @data(('JavaScript for beginners', '1234 2345 3456 4567', '10/24', '345', 'Poland')
+          ('Complete Test Automation Bundle', '1234 2345 3456 4567', '10/24', '345', 'Poland'))
     @unpack
     def test_registerPage(self, namecourse, cardnumber, carddata, cardcode, countryname):
         
@@ -26,5 +28,6 @@ class RegisterTest(unittest.TestCase):
         message = self.rp.errorCardNumber()
         assert message == 'Numer karty jest nieprawidłowy.' 
         self.rp.clickAllCourse()
+        self.driver.get(self.baseUrl)
         
         self.driver.quit()
