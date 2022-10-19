@@ -18,9 +18,9 @@ class RegisterCSVTest(unittest.TestCase):
     
     @data(*getCSVData('/klon/Project_test/testdata.csv'))
     @unpack
-    def test_registerPage(self, namecourse, cardnumber, carddata, cardcode, countryname):
+    def test_registerPage(self, fullName, cardnumber, carddata, cardcode, countryname):
         
-        self.rp.registerCourse(namecourse)
+        self.rp.registerCourse(fullName)
         self.rp.card(cardnumber, carddata, cardcode) 
         self.rp.country(countryname)
                 
