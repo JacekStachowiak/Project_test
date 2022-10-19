@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from pages.home.register_page import RegisterPage
 import unittest
+import time
 
 class RegisterTest(unittest.TestCase):
     
@@ -20,5 +21,6 @@ class RegisterTest(unittest.TestCase):
         
         message = self.rp.errorCardNumber()
         assert message == 'Numer karty jest nieprawidłowy.' 
+        
         self.driver.quit()
 
