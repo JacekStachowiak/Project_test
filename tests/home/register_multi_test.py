@@ -4,6 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from pages.home.register_page import RegisterPage
+from pages.home.navigation_page import NavigationPage
 import unittest
 from ddt import ddt, data, unpack
 import pytest
@@ -19,6 +20,10 @@ class RegisterTest(unittest.TestCase):
     driver.maximize_window()
     driver.implicitly_wait(3)
     rp = RegisterPage(driver)
+    #nav = NavigationPage(driver)
+    
+    #def setUp(self):
+        #self.nav.navigateAllCourse()
     
     @data(('JavaScript for beginners', '1234 2345 3456 4567', '10/24', '345', 'Poland'),
           ('Complete Test Automation Bundle', '1234 2345 3456 4567', '10/24', '345', 'Poland'))

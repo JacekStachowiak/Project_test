@@ -23,10 +23,10 @@ class RegisterCSVTest(unittest.TestCase):
     driver.implicitly_wait(3)
     driver.get(baseUrl)
     rp = RegisterPage(driver)
-    np = NavigationPage(driver)
+    #nav = NavigationPage(driver)
     
-    def setUp(self):
-        self.driver.find_element(By.LINK_TEXT, 'ALL COURSES').click()
+    #def setUp(self):
+        #self.nav.navigateAllCourse()
     
     @data(*getCSVData('/klon/Project_test/testdata.csv'))
     @unpack

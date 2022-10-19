@@ -4,8 +4,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from pages.home.register_page import RegisterPage
+#from pages.home.navigation_page import NavigationPage
 import unittest
-import time
+
 
 class RegisterTest(unittest.TestCase):
     
@@ -17,6 +18,10 @@ class RegisterTest(unittest.TestCase):
     driver.maximize_window()
     driver.implicitly_wait(3)
     rp = RegisterPage(driver)
+    #nav = NavigationPage(driver)
+    
+    #def setUp(self):
+        #self.nav.navigateAllCourse()
     
     def test_registerPage(self):
         self.driver.get(self.baseUrl)
