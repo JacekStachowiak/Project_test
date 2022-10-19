@@ -4,11 +4,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from pages.home.register_page import RegisterPage
+from pages.home.navigation_page import NavigationPage
 import unittest
 from ddt import ddt, data, unpack
 from utilities.read_data import getCSVData
 import time
 
+#@pytest.mark.usefixtures('setUp')
 @ddt
 class RegisterCSVTest(unittest.TestCase):
     
@@ -21,10 +23,14 @@ class RegisterCSVTest(unittest.TestCase):
     driver.implicitly_wait(3)
     driver.get(baseUrl)
     rp = RegisterPage(driver)
+    np = NavigationPage(driver)
+    
+    def setUp(self):
+        self.driver.find_element(By.LINK_TEXT, 'ALL COURSES').click()
     
     @data(*getCSVData('/klon/Project_test/testdata.csv'))
     @unpack
-    def test_registerPage(self, fullName, cardnumber, carddata, cardcode, countryname):
+    def test_registerPage(self, fullName, cardnumber, carddata, cardcode, countryname, setUp):
         
         self.rp.registerCourse(fullName)
         time.sleep(1)

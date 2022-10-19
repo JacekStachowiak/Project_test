@@ -15,6 +15,7 @@ class RegisterTest(unittest.TestCase):
     options = Options()
     options.add_argument('--disable-blink-features=AutomationControlled')
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    
     driver.maximize_window()
     driver.implicitly_wait(3)
     rp = RegisterPage(driver)
