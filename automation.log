@@ -1,0 +1,17 @@
+2022/10/19 11:09 AM: INFO: Element found with locator: ALL COURSES, and locatorType: text
+2022/10/19 11:10 AM: INFO: Cliked on the element with locator: ALL COURSES, locatorType: text
+2022/10/19 11:10 AM: INFO: Element found with locator: //h4[contains(@class, "dynamic-heading") and contains(text(), "JavaScript for beginners")], and locatorType: xpath
+2022/10/19 11:10 AM: INFO: Cliked on the element with locator: //h4[contains(@class, "dynamic-heading") and contains(text(), "JavaScript for beginners")], locatorType: xpath
+2022/10/19 11:10 AM: INFO: Element found with locator: //button[@class="dynamic-button btn btn-default btn-lg btn-enroll"], and locatorType: xpath
+2022/10/19 11:10 AM: INFO: Cliked on the element with locator: //button[@class="dynamic-button btn btn-default btn-lg btn-enroll"], locatorType: xpath
+2022/10/19 11:10 AM: INFO: Element found with locator: //*[@id="card-number"]/div/iframe, and locatorType: xpath
+2022/10/19 11:10 AM: INFO: Element found with locator: cardnumber, and locatorType: name
+2022/10/19 11:10 AM: INFO: Send data on  element with locator: cardnumber, locatorType: name
+2022/10/19 11:10 AM: INFO: Element found with locator: //*[@id="card-expiry"]/div/iframe, and locatorType: xpath
+2022/10/19 11:10 AM: INFO: Element found with locator: exp-date, and locatorType: name
+2022/10/19 11:10 AM: INFO: Send data on  element with locator: exp-date, locatorType: name
+2022/10/19 11:10 AM: INFO: Element found with locator: //*[@id="card-cvc"]/div/iframe, and locatorType: xpath
+2022/10/19 11:10 AM: INFO: Element found with locator: cvc, and locatorType: name
+2022/10/19 11:10 AM: INFO: Send data on  element with locator: cvc, locatorType: name
+2022/10/19 11:10 AM: INFO: Element found with locator: country-list, and locatorType: name
+2022/10/19 11:10 AM: INFO: Element found with locator: //div[@class="card-errors has-error"], and locatorType: xpath

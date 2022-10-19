@@ -13,21 +13,20 @@ class RegisterTest(unittest.TestCase):
     driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.maximize_window()
     driver.implicitly_wait(3)
-    driver.get(baseUrl)
     rp = RegisterPage(driver)
     
-    @data(('JavaScript for beginners', '1234 2345 3456 4567', '10/24', '345', 'Poland')
+    @data(('JavaScript for beginners', '1234 2345 3456 4567', '10/24', '345', 'Poland'),
           ('Complete Test Automation Bundle', '1234 2345 3456 4567', '10/24', '345', 'Poland'))
     @unpack
-    def test_registerPage(self, namecourse, cardnumber, carddata, cardcode, countryname):
+    @pytest.mark.run(order=1)
+    def test_registerPage(self, fullName, cardnumber, carddata, cardcode, countryname):
         
-        self.rp.registerCourse(namecourse)
+        self.driver.get(self.baseUrl)
+        self.rp.registerCourse(fullName)
         self.rp.card(cardnumber, carddata, cardcode) 
         self.rp.country(countryname)
-                
+        
         message = self.rp.errorCardNumber()
         assert message == 'Numer karty jest nieprawidłowy.' 
-        self.rp.clickAllCourse()
-        self.driver.get(self.baseUrl)
-        
+                        
         self.driver.quit()
