@@ -22,9 +22,11 @@ class RegisterCSVTest(unittest.TestCase):
     def test_registerPage(self, fullName, cardnumber, carddata, cardcode, countryname):
         
         self.rp.registerCourse(fullName)
+        time.sleep(1)
         self.rp.card(cardnumber, carddata, cardcode) 
+        time.sleep(1)
         self.rp.country(countryname)
-                
+        time.sleep(1)                
         message = self.rp.errorCardNumber()
         assert message == 'Numer karty jest nieprawidłowy.' 
                         

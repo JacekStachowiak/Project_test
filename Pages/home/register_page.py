@@ -54,15 +54,13 @@ class RegisterPage(SelenDriver):
         
     def enterCardNumber(self, cardnumber):
         self.sendKeys(cardnumber, self._card_number, locatorType='name')
-        time.sleep(2)
-    
+            
     def enterCardData(self, carddata):
         self.sendKeys(carddata, self._card_data, locatorType='name')
-        time.sleep(2)
-    
+            
     def enterCardCode(self, cardcode):
         self.sendKeys(cardcode, self._card_code, locatorType='name')
-        time.sleep(2)
+        
    
     def selectCountry(self, countryname):
         self.select(countryname, self._country_select, locatorType='name')
