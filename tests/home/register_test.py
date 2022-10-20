@@ -11,7 +11,6 @@ import unittest
 class RegisterTest(unittest.TestCase):
     
     baseUrl = 'https://courses.letskodeit.com/'
-    driver = webdriver.Chrome(ChromeDriverManager().install())
     options = Options()
     options.add_argument('--disable-blink-features=AutomationControlled')
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)

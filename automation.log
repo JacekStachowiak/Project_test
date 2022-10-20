@@ -1,0 +1,11 @@
+2022/10/20 12:48 PM: INFO: Element found with locator: //div[contains(text(),"Sign Up or Log In")], and locatorType: xpath
+2022/10/20 12:48 PM: INFO: Cliked on the element with locator: //div[contains(text(),"Sign Up or Log In")], locatorType: xpath
+2022/10/20 12:48 PM: INFO: Element found with locator: email, and locatorType: id
+2022/10/20 12:48 PM: INFO: Send data on  element with locator: email, locatorType: id
+2022/10/20 12:48 PM: INFO: Element found with locator: password, and locatorType: id
+2022/10/20 12:48 PM: INFO: Send data on  element with locator: password, locatorType: id
+2022/10/20 12:48 PM: INFO: Element found with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], and locatorType: xpath
+2022/10/20 12:48 PM: INFO: Cliked on the element with locator: //input[@class="btn btn-default btn-block btn-md dynamic-button"], locatorType: xpath
+2022/10/20 12:48 PM: INFO: Element found with locator: //span[@class="caret"], and locatorType: xpath
+2022/10/20 12:48 PM: INFO: Cliked on the element with locator: //span[@class="caret"], locatorType: xpath
+2022/10/20 12:48 PM: INFO: Element found with locator: //ul[@class="dropdown-menu zl-navbar-rhs-ul"]//a[@href="/account"], and locatorType: xpath
