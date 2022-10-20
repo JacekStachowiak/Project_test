@@ -7,8 +7,8 @@ import pytest
 
 class LoginTest(unittest.TestCase):
     
-    @pytest.mark.run(order=1)
-    def test_validLogin(self): 
+    @pytest.mark.run(order=2)
+    def test_invalidLogin(self): 
         baseUrl = 'https://letskodeit.com/'
         driver = webdriver.Chrome(ChromeDriverManager().install())
         driver.maximize_window()
@@ -16,13 +16,13 @@ class LoginTest(unittest.TestCase):
         lp = LoginPage(driver)       
         driver.get(baseUrl)
         
-        lp.loginValid('test@email.com', 'abcabcABC')
-        message_valid = lp.loginNotOK()
-        assert message_valid == 'Your username or password is invalid. Please try again.'       
+        lp.loginInValid('test@email.com', 'abcabcABC')
+        message_invalid = lp.loginNotOk()
+        assert message_invalid == 'Your username or password is invalid. Please try again.'       
         driver.quit()
     
                  
-    @pytest.mark.run(order=2)   # kolejność testów
+    @pytest.mark.run(order=1)   # kolejność testów
     def test_loginSucces(self):  
         baseUrl = 'https://letskodeit.com/'
         driver = webdriver.Chrome(ChromeDriverManager().install())
@@ -32,23 +32,12 @@ class LoginTest(unittest.TestCase):
         driver.get(baseUrl)
         
         lp.loginSuccesfull('test@email.com', 'abcabc')
-        message_succes = lp.loginOK()
+        lp.logout()
+        message_succes = lp.loginOk()
         assert message_succes == 'My Account'
+   
         driver.quit()
-    
-    def test_loginPustePole(self):
-        baseUrl = 'https://letskodeit.com/'
-        driver = webdriver.Chrome(ChromeDriverManager().install())
-        driver.maximize_window()
-        driver.implicitly_wait(3)
-        lp = LoginPage(driver) 
-        driver.get(baseUrl)
-        
-        lp.loginValid('test@email.com', 'abcabc')
-        message_succes = lp.loginOK()
-        assert message_succes == 'My Account'
-        driver.quit()
-        
+           
                 
         
 
