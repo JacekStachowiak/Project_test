@@ -14,24 +14,16 @@ import time
 @ddt
 class RegisterCSVTest(unittest.TestCase):
     
+    
     baseUrl = 'https://courses.letskodeit.com/'
-    options = Options()
-    options.add_argument('--disable-blink-features=AutomationControlled')
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-    driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver.maximize_window()
-    driver.implicitly_wait(3)
-    driver.get(baseUrl)
-    rp = RegisterPage(driver)
-    #nav = NavigationPage(driver)
-    
-    #def setUp(self):
-        #self.nav.navigateAllCourse()
-    
+       
     @data(*getCSVData('/klon/Project_test/testdata.csv'))
     @unpack
-    def test_registerPage(self, fullName, cardnumber, carddata, cardcode, countryname, setUp):
+    def test_registerPage(self, setup, fullName, cardnumber, carddata, cardcode, countryname):
         
+        self.driver = setup
+        self.driver.get(self.baseUrl)
+        self.rp = RegisterPage(self.driver)
         self.rp.registerCourse(fullName)
         time.sleep(1)
         self.rp.card(cardnumber, carddata, cardcode) 
